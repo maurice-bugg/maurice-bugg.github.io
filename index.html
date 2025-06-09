@@ -34,6 +34,21 @@
       color: var(--text-dark);
     }
 
+    body.dark-mode .card {
+      background: #2c2c2e;
+      color: var(--text-dark);
+    }
+
+    body.dark-mode header,
+    body.dark-mode nav a {
+      background-color: #1d1d1f;
+      color: var(--text-dark);
+    }
+
+    body.dark-mode nav a:hover {
+      color: #007aff;
+    }
+
     header {
       width: 100%;
       max-width: none;
@@ -75,8 +90,10 @@
     }
 
     .hero {
+      width: 100%;
+      max-width: 100vw;
       text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1521747116042-5a810fda9664');
+      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -172,18 +189,77 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
-      <a href="#passions">Passions</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
-  </header>
+  <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" alt="MB Logo" style="height: 32px; width: 32px; border-radius: 50%;">
+      <h1 style="margin: 0;"><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
+    </div>
+  <nav style="display: flex; align-items: center; gap: 1rem;">
+  <div class="nav-item" style="position: relative; display: inline-block;">
+    <a href="#about">About</a>
+    <div class="dropdown">
+      <a href="#about" style="display: block; margin: 0.5rem 0;">Background</a>
+      <a href="#timeline" style="display: block; margin: 0.5rem 0;">Timeline</a>
+    </div>
+  </div>
+  <div class="nav-item" style="position: relative; display: inline-block;">
+    <a href="#work">Work</a>
+    <div class="dropdown">
+      <a href="#work" style="display: block; margin: 0.5rem 0;">Microsoft</a>
+      <a href="#projects" style="display: block; margin: 0.5rem 0;">Projects</a>
+    </div>
+  </div>
+  <div class="nav-item" style="position: relative; display: inline-block;">
+    <a href="#passions">Passions</a>
+    <div class="dropdown">
+      <a href="#passions" style="display: block; margin: 0.5rem 0;">Mental Health</a>
+      <a href="#passions" style="display: block; margin: 0.5rem 0;">Endurance</a>
+    </div>
+  </div>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contact</a>
+</nav>
+<style>
+  nav a {
+    position: relative;
+  }
+  .nav-item .dropdown {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .nav-item:hover .dropdown {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    nav a {
+      margin: 0.5rem 0;
+    }
+    .dropdown {
+      position: static;
+      box-shadow: none;
+      padding-left: 1rem;
+    }
+  }
+</style>
+  <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+</header>
 
   <section class="hero" id="hero" data-aos="fade-up">
     <h2>Welcome to My Story</h2>
