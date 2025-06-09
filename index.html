@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maurice Bugg</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://fav.farm/🧠" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="icon" href="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" />
   <style>
+    :root {
+      --bg-light: #f5f5f7;
+      --bg-dark: #1d1d1f;
+      --text-light: #1d1d1f;
+      --text-dark: #f5f5f7;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,51 +24,73 @@
 
     html, body {
       scroll-behavior: smooth;
-      background-color: #f5f5f7;
-      color: #1d1d1f;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     header {
+      width: 100%;
+      max-width: none;
       background-color: #fff;
       padding: 1rem 2rem;
       border-bottom: 1px solid #e0e0e0;
-      text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    header h1 {
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
     }
 
-    header h1:hover {
+    nav a:hover {
       color: #007aff;
+    }
+
+    .toggle-dark {
+      background: #007aff;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     section {
       padding: 4rem 2rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .hero {
       text-align: center;
-      background: linear-gradient(to right, #000, #333);
+      background-image: url('https://images.unsplash.com/photo-1521747116042-5a810fda9664');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-blend-mode: overlay;
       color: #fff;
     }
 
     .hero h2 {
       font-size: 2.75rem;
       margin-bottom: 1rem;
-      animation: fadeIn 1s ease-out;
     }
 
     .hero p {
       font-size: 1.25rem;
-      animation: fadeIn 2s ease-out;
     }
 
     .section-title {
@@ -72,7 +102,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -80,18 +110,57 @@
     .card {
       background: white;
       padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
     }
 
     .card h4 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    form input, form textarea {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    form button {
+      background: #007aff;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      border-left: 3px solid #007aff;
+      margin-top: 2rem;
+    }
+
+    .timeline-entry {
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-entry h4 {
+      margin: 0.5rem 0 0.25rem;
     }
 
     footer {
@@ -100,84 +169,91 @@
       font-size: 0.875rem;
       color: #6e6e73;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
   <header>
-    <h1 onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Maurice Bugg</h1>
+    <h1><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#passions">Passions</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="hero" data-aos="fade-up">
     <h2>Welcome to My Story</h2>
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
-  <section>
+  <section id="about" data-aos="fade-up">
     <h3 class="section-title">About Me</h3>
     <p>I’m a multidisciplinary builder from the DMV area now living in New York City. With a background in technology, international development, and mental health advocacy, I strive to bring purpose and connection to everything I do—from product launches to nonprofit work, marathons, and storytelling.</p>
   </section>
 
-  <section>
+  <section id="work" data-aos="fade-up">
     <h3 class="section-title">My Work</h3>
     <div class="grid">
-      <div class="card">
-        <h4>Microsoft – Project Manager</h4>
-        <p>Lead cross-functional workstreams focused on engineering operations and GTM strategy. Previously helped launch AI solutions in public sector and healthcare.</p>
-      </div>
-      <div class="card">
-        <h4>NAMI-NYC</h4>
-        <p>Community outreach volunteer and NYC Marathon fundraiser supporting young adult mental health.</p>
-      </div>
-      <div class="card">
-        <h4>BRC Leadership Council</h4>
-        <p>Board member supporting housing justice in NYC through corporate sponsorship and storytelling initiatives.</p>
-      </div>
+      <div class="card"><h4>Microsoft – Project Manager</h4><p>Lead cross-functional workstreams focused on engineering operations and GTM strategy.</p></div>
+      <div class="card"><h4>NAMI-NYC</h4><p>Community outreach volunteer and NYC Marathon fundraiser supporting young adult mental health.</p></div>
+      <div class="card"><h4>BRC Leadership Council</h4><p>Board member supporting housing justice in NYC through corporate sponsorship and storytelling initiatives.</p></div>
     </div>
   </section>
 
-  <section>
+  <section id="projects" data-aos="fade-up">
     <h3 class="section-title">My Projects</h3>
     <div class="grid">
-      <div class="card">
-        <h4>Secure the Future Initiative</h4>
-        <p>Led post-incident retrospectives for cloud engineering platforms to improve response time and reduce risk.</p>
-      </div>
-      <div class="card">
-        <h4>Personal Knowledge System</h4>
-        <p>Built a personal knowledge base using Notion and markdown to manage life goals, health, and long-term planning.</p>
-      </div>
-      <div class="card">
-        <h4>Intrepid x Southeast Asia</h4>
-        <p>Upcoming solo journey through Thailand and Cambodia, combining wellness, exploration, and global connection.</p>
-      </div>
+      <div class="card"><h4>Secure the Future Initiative</h4><p>Led post-incident retrospectives for cloud engineering platforms.</p></div>
+      <div class="card"><h4>Personal Knowledge System</h4><p>Built a personal knowledge base to manage life goals, health, and long-term planning.</p></div>
+      <div class="card"><h4>Intrepid x Southeast Asia</h4><p>Upcoming solo journey combining wellness, exploration, and global connection.</p></div>
     </div>
   </section>
 
-  <section>
+  <section id="passions" data-aos="fade-up">
     <h3 class="section-title">My Passions</h3>
     <div class="grid">
-      <div class="card">
-        <h4>Endurance Sports</h4>
-        <p>Triathlete in training. Cyclist. Sub-4-hour marathon chaser. I believe fitness is fuel for focus.</p>
-      </div>
-      <div class="card">
-        <h4>Mental Health</h4>
-        <p>Advocating for young men of color to feel safe, seen, and supported in their mental health journeys.</p>
-      </div>
-      <div class="card">
-        <h4>Global Citizenship</h4>
-        <p>Exploring life across cultures, systems, and borders—starting with Peace Corps and Schwarzman Scholars programs.</p>
-      </div>
+      <div class="card"><h4>Endurance Sports</h4><p>Triathlete in training. Cyclist. Sub-4-hour marathon chaser.</p></div>
+      <div class="card"><h4>Mental Health</h4><p>Advocating for young men of color to feel safe, seen, and supported.</p></div>
+      <div class="card"><h4>Global Citizenship</h4><p>Exploring life across cultures and global public service opportunities.</p></div>
     </div>
+  </section>
+
+  <section id="blog" data-aos="fade-up">
+    <h3 class="section-title">Blog & Writing</h3>
+    <div class="grid">
+      <div class="card"><h4>Lessons from the Marathon</h4><p>Training taught me more than endurance—it taught me presence, pain tolerance, and self-trust.</p></div>
+      <div class="card"><h4>What I Learned in 2025 (So Far)</h4><p>From career clarity to learning Thai recipes—here’s what I’ve taken away from the year.</p></div>
+    </div>
+  </section>
+
+  <section id="timeline" data-aos="fade-up">
+    <h3 class="section-title">Timeline</h3>
+    <div class="timeline">
+      <div class="timeline-entry"><h4>2025 – Present</h4><p>Focused on AI, global service, and storytelling through endurance training and civic work.</p></div>
+      <div class="timeline-entry"><h4>2023 – 2024</h4><p>Led projects at Microsoft and expanded impact through nonprofit boards and advocacy.</p></div>
+      <div class="timeline-entry"><h4>2021 – 2022</h4><p>Completed undergrad, joined Microsoft full-time, and moved to NYC.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h3 class="section-title">Contact Me</h3>
+    <form action="https://formspree.io/f/xqkrzqqn" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer>
     &copy; 2025 Maurice Bugg. Built with purpose. Powered by GitHub Pages.
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
