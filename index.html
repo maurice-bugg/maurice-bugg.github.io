@@ -204,6 +204,25 @@ body.dark-mode nav a {
   
 
 
+.work-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.work-scroll .card {
+  flex: 1 1 calc(33.333% - 1rem);
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+
+.work-scroll .card:hover {
+  transform: scale(1.03);
+}
+
 </style>
 </head>
 <body class="dark-mode">
@@ -287,16 +306,18 @@ body.dark-mode nav a {
     <p>I’m a multidisciplinary builder from the DMV area now living in New York City. With a background in technology, international development, and mental health advocacy, I strive to bring purpose and connection to everything I do—from product launches to nonprofit work, marathons, and storytelling.</p>
   </section>
 
-  <section id="work" style="scroll-margin-top: 160px;" style="scroll-margin-top: 160px;" data-aos="fade-up">
-    <h3 class="section-title">My Work</h3>
-    <div class="grid">
+  <section id="work" style="scroll-margin-top: 160px;" data-aos="fade-up">
+  <h3 class="section-title">My Work</h3>
+  <div class="grid work-scroll">
       <div class="card"><h4>Microsoft – Project Manager</h4><p>Lead cross-functional workstreams focused on engineering operations and GTM strategy.</p></div>
       <div class="card"><h4>NAMI-NYC</h4><p>Community outreach volunteer and NYC Marathon fundraiser supporting young adult mental health.</p></div>
       <div class="card"><h4>BRC Leadership Council</h4><p>Board member supporting housing justice in NYC through corporate sponsorship and storytelling initiatives.</p></div>
-    </div>
-  </section>
-
-  <section id="projects" data-aos="fade-up">
+    <div class="card"><h4>Global Partnerships Lead – Schwarzman Scholars Initiative</h4><p>Worked on increasing access for first-gen students across international academic networks.</p></div>
+<div class="card"><h4>Engineering Ethics Teaching Assistant</h4><p>Supported undergraduates in ethical reasoning on real-world projects.</p></div>
+<div class="card"><h4>Science & Global Change Research Scholar</h4><p>Explored environmental policy solutions using interdisciplinary methods.</p></div>
+  </div>
+</section>
+<section id="projects" data-aos="fade-up">
     <h3 class="section-title">My Projects</h3>
     <div class="grid">
       <div class="card"><h4>Secure the Future Initiative</h4><p>Led post-incident retrospectives for cloud engineering platforms.</p></div>
