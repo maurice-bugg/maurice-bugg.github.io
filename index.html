@@ -194,50 +194,21 @@
       <img src="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" alt="MB Logo" style="height: 32px; width: 32px; border-radius: 50%;">
       <h1 style="margin: 0;"><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
     </div>
-  <nav style="display: flex; align-items: center; gap: 1rem;">
+  <nav style="display: flex; align-items: center; justify-content: center; flex-grow: 1; gap: 2rem;">
+  <div class="nav-item" style="position: relative; display: inline-block;"><a href="#about">About</a></div>
+  <div class="nav-item" style="position: relative; display: inline-block;"><a href="#work">Work</a></div>
+  <div class="nav-item" style="position: relative; display: inline-block;"><a href="#passions">Passions</a></div>
   <div class="nav-item" style="position: relative; display: inline-block;">
-    <a href="#about">About</a>
-    <div class="dropdown">
-      <a href="#about" style="display: block; margin: 0.5rem 0;">Background</a>
-      <a href="#timeline" style="display: block; margin: 0.5rem 0;">Timeline</a>
-    </div>
+    <a href="#blog">Blog</a>
   </div>
   <div class="nav-item" style="position: relative; display: inline-block;">
-    <a href="#work">Work</a>
-    <div class="dropdown">
-      <a href="#work" style="display: block; margin: 0.5rem 0;">Microsoft</a>
-      <a href="#projects" style="display: block; margin: 0.5rem 0;">Projects</a>
-    </div>
+    <a href="#contact">Contact</a>
   </div>
-  <div class="nav-item" style="position: relative; display: inline-block;">
-    <a href="#passions">Passions</a>
-    <div class="dropdown">
-      <a href="#passions" style="display: block; margin: 0.5rem 0;">Mental Health</a>
-      <a href="#passions" style="display: block; margin: 0.5rem 0;">Endurance</a>
-    </div>
-  </div>
-  <a href="#blog">Blog</a>
-  <a href="#contact">Contact</a>
 </nav>
 <style>
   nav a {
     position: relative;
   }
-  .nav-item .dropdown {
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(10px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .nav-item:hover .dropdown {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
   @media (max-width: 768px) {
     header {
       flex-direction: column;
