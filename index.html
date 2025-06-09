@@ -184,34 +184,10 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-      @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      transition: opacity 0.5s ease;
-    }
-
-    .loaded #loader {
-      opacity: 0;
-      pointer-events: none;
-    }
+  </style>
 </head>
 
 <body>
-  <div id="loader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity 0.5s ease;">
-    <div style="width:48px;height:48px;border:4px solid #ccc;border-top-color:#007aff;border-radius:50%;animation:spin 1s linear infinite;"></div>
-  </div>
   <header>
     <div class="logo">MB</div>
     <nav>
@@ -334,13 +310,7 @@
         });
       });
     });
-      // Hide loader once content is ready
-    window.addEventListener('load', () => {
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          document.body.classList.add('loaded');
-        }, 200);
-      });
-    });
   </script>
 </body>
+
+</html>
