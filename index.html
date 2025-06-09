@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maurice's Story</title>
+  <title>Maurice Bugg</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://fav.farm/🧠" />
   <style>
     * {
       box-sizing: border-box;
@@ -13,11 +14,10 @@
       font-family: 'Inter', sans-serif;
     }
 
-    body {
+    html, body {
+      scroll-behavior: smooth;
       background-color: #f5f5f7;
       color: #1d1d1f;
-      line-height: 1.6;
-      scroll-behavior: smooth;
     }
 
     header {
@@ -32,44 +32,66 @@
 
     header h1 {
       font-size: 2rem;
+      cursor: pointer;
       transition: color 0.3s ease;
     }
 
     header h1:hover {
       color: #007aff;
-      cursor: pointer;
     }
 
-    section.hero {
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero {
       text-align: center;
-      padding: 6rem 2rem 4rem;
       background: linear-gradient(to right, #000, #333);
       color: #fff;
     }
 
-    section.hero h2 {
-      font-size: 2.5rem;
+    .hero h2 {
+      font-size: 2.75rem;
       margin-bottom: 1rem;
       animation: fadeIn 1s ease-out;
     }
 
-    section.hero p {
+    .hero p {
       font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto;
       animation: fadeIn 2s ease-out;
     }
 
-    section.story {
-      padding: 3rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      animation: slideUp 1s ease-out;
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #007aff;
+      padding-left: 1rem;
     }
 
-    section.story h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
 
     footer {
@@ -83,11 +105,6 @@
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
@@ -97,28 +114,70 @@
 
   <section class="hero">
     <h2>Welcome to My Story</h2>
-    <p>This is where I share the journey of my life—challenges, triumphs, and everything in between.</p>
+    <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
-  <section class="story">
-    <h3>About Me</h3>
-    <p>
-      I was born on February 15, 2000, and my life has been a journey of growth, resilience, and purpose. From my early days in the DMV area to working at Microsoft in NYC, every step has shaped who I am. I’m passionate about mental health advocacy, international development, and creating impact.
-    </p>
+  <section>
+    <h3 class="section-title">About Me</h3>
+    <p>I’m a multidisciplinary builder from the DMV area now living in New York City. With a background in technology, international development, and mental health advocacy, I strive to bring purpose and connection to everything I do—from product launches to nonprofit work, marathons, and storytelling.</p>
+  </section>
 
-    <h3>My Mission</h3>
-    <p>
-      To live with integrity and alignment—trusting my intuition, honoring my inner wisdom, and expressing myself fully. I seek to move through life with presence and courage, grounded in a deep understanding of who I am and committed to showing up as that person, always.
-    </p>
+  <section>
+    <h3 class="section-title">My Work</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Microsoft – Project Manager</h4>
+        <p>Lead cross-functional workstreams focused on engineering operations and GTM strategy. Previously helped launch AI solutions in public sector and healthcare.</p>
+      </div>
+      <div class="card">
+        <h4>NAMI-NYC</h4>
+        <p>Community outreach volunteer and NYC Marathon fundraiser supporting young adult mental health.</p>
+      </div>
+      <div class="card">
+        <h4>BRC Leadership Council</h4>
+        <p>Board member supporting housing justice in NYC through corporate sponsorship and storytelling initiatives.</p>
+      </div>
+    </div>
+  </section>
 
-    <h3>What I Care About</h3>
-    <p>
-      I care deeply about family, wellness, global justice, and building community. Whether it's running a marathon, supporting my brother, or volunteering with BRC and NAMI-NYC, I try to live with purpose.
-    </p>
+  <section>
+    <h3 class="section-title">My Projects</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Secure the Future Initiative</h4>
+        <p>Led post-incident retrospectives for cloud engineering platforms to improve response time and reduce risk.</p>
+      </div>
+      <div class="card">
+        <h4>Personal Knowledge System</h4>
+        <p>Built a personal knowledge base using Notion and markdown to manage life goals, health, and long-term planning.</p>
+      </div>
+      <div class="card">
+        <h4>Intrepid x Southeast Asia</h4>
+        <p>Upcoming solo journey through Thailand and Cambodia, combining wellness, exploration, and global connection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="section-title">My Passions</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Endurance Sports</h4>
+        <p>Triathlete in training. Cyclist. Sub-4-hour marathon chaser. I believe fitness is fuel for focus.</p>
+      </div>
+      <div class="card">
+        <h4>Mental Health</h4>
+        <p>Advocating for young men of color to feel safe, seen, and supported in their mental health journeys.</p>
+      </div>
+      <div class="card">
+        <h4>Global Citizenship</h4>
+        <p>Exploring life across cultures, systems, and borders—starting with Peace Corps and Schwarzman Scholars programs.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Maurice Bugg. All rights reserved.
+    &copy; 2025 Maurice Bugg. Built with purpose. Powered by GitHub Pages.
   </footer>
 </body>
 </html>
