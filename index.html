@@ -188,7 +188,7 @@
     }
   </style>
 </head>
-<body>
+<body class="dark-mode">
   <header>
   <div style="display: flex; align-items: center; justify-content: space-between; width: 100%">
     <div style="display: flex; align-items: center; gap: 1rem;">
@@ -207,7 +207,7 @@
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
   </nav>
-  <button class="toggle-dark" onclick="toggleDarkMode()" style="margin-left: auto; background: #007aff; border: none; color: white; padding: 0.5rem 2rem; border-radius: 8px; cursor: pointer;">Toggle Dark Mode</button>
+  
 </header>
 <style>
   nav.main-nav {
@@ -332,12 +332,6 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
-<script>
-  function toggleDarkMode() {
-    const isDark = document.body.classList.toggle('dark-mode');
-    const button = document.querySelector('.toggle-dark');
-    button.textContent = isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode';
-  }
-</script>
+
 </body>
 </html>
