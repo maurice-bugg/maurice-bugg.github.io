@@ -81,7 +81,6 @@
 
     .hero {
       text-align: center;
-      animation: fadeUp 1s ease-out both;
     }
 
     .hero h1 {
@@ -117,7 +116,14 @@
       border-radius: 6px;
       padding: 1.5rem;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card:hover {
@@ -132,7 +138,14 @@
 
     .timeline-entry {
       margin-bottom: 2rem;
-      transition: transform 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .timeline-entry.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .timeline-entry:hover {
@@ -200,7 +213,7 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero visible">
     <h1>Welcome to My Story</h1>
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
@@ -282,6 +295,8 @@
   </section>
 
   <script>
+    const cards = document.querySelectorAll('.card');
+    const entries = document.querySelectorAll('.timeline-entry');
     const sections = document.querySelectorAll('section');
 
     const observer = new IntersectionObserver(entries => {
@@ -292,6 +307,14 @@
       });
     }, {
       threshold: 0.1
+    });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+
+    entries.forEach(entry => {
+      observer.observe(entry);
     });
 
     sections.forEach(section => {
