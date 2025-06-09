@@ -194,8 +194,14 @@
     <img src="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" alt="MB Logo" style="height: 32px; width: 32px; border-radius: 50%;">
     <h1 style="margin: 0;"><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
   </div>
-  $1
-  <button class="menu-toggle" onclick="document.querySelector('nav.main-nav').classList.toggle('active')">☰ Menu</button>
+  <nav class="main-nav" id="mainNav">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#passions">Passions</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="menu-toggle" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
   <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
 </header>
 <style>
@@ -203,6 +209,27 @@
     display: flex;
     gap: 2rem;
     align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    nav.main-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    nav.main-nav.active {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
   }
 
   @media (max-width: 768px) {
