@@ -1,216 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maurice Bugg</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="icon" href="https://ui-avatars.com/api/?name=MB&background=007aff&color=ffffff&rounded=true" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg-light: #f5f5f7;
-      --bg-dark: #121215;
-      --text-light: #1d1d1f;
-      --text-dark: #f5f5f7;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
-
-    html, body {
+    html {
       scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    body.dark-mode {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    body.dark-mode .card {
-      background: #2a2a2e;
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s ease;
-      color: var(--text-dark);
-    }
-
-    body.dark-mode header,
-    body.dark-mode nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    body.dark-mode nav a:hover {
-      color: #007aff;
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      color: #1a1a1a;
     }
 
     header {
-      width: 100%;
-      background-color: #1d1d1f;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #333;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: none;
     }
 
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
+    @media (min-width: 768px) {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        background: white;
+        padding: 1.5rem 3rem;
+        border-bottom: 1px solid #e0e0e0;
+        z-index: 10;
+        animation: fadeInDown 0.5s ease-out both;
+      }
 
-    nav a:hover {
-      color: #007aff;
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #007aff;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      nav a {
+        margin-left: 2rem;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #007aff;
+        transform: translateY(-2px);
+      }
     }
 
     section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
+      padding: 200px 2rem 120px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      max-width: 960px;
       margin: 0 auto;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero {
-      width: 100%;
-      max-width: 100vw;
       text-align: center;
+      animation: fadeUp 1s ease-out both;
     }
 
-    .hero h2 {
-      font-size: 2.75rem;
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
       margin-bottom: 1rem;
+      letter-spacing: -0.5px;
     }
 
     .hero p {
       font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-left: 5px solid #007aff;
-      padding-left: 1rem;
+    h2, h3 {
+      letter-spacing: -0.5px;
+      font-weight: 700;
+      transition: transform 0.4s ease;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    .card-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
     }
 
     .card {
-      background: white;
+      flex: 0 0 300px;
+      background: #f9f9f9;
+      border-radius: 6px;
       padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    form input, form textarea {
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    form button {
-      background: #007aff;
-      color: white;
-      border: none;
-      padding: 0.75rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
+      transform: scale(1.03) translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .timeline {
-      position: relative;
-      padding-left: 30px;
-      border-left: 3px solid #007aff;
-      margin-top: 2rem;
+      border-left: 2px solid #007aff;
+      padding-left: 1rem;
     }
 
     .timeline-entry {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s ease;
     }
 
-    .timeline-entry h4 {
-      margin: 0.5rem 0 0.25rem;
+    .timeline-entry:hover {
+      transform: translateX(5px);
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #6e6e73;
+    form {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .work-scroll {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
     }
 
-    @media (max-width: 768px) {
-      #about,
-      #work,
-      #passions,
-      #blog,
-      #timeline {
-        scroll-margin-top: 160px !important;
-      }
-      .work-scroll {
-        grid-template-columns: 1fr;
-      }
-      nav {
-        display: none;
-      }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007aff;
     }
-  </style>
+
+    button {
+      padding: 0.75rem;
+      border: none;
+      background: #007aff;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: #005ecb;
+      transform: scale(1.02);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+      @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loaded #loader {
+      opacity: 0;
+      pointer-events: none;
+    }
 </head>
-<body class="dark-mode">
+
+<body>
+  <div id="loader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity 0.5s ease;">
+    <div style="width:48px;height:48px;border:4px solid #ccc;border-top-color:#007aff;border-radius:50%;animation:spin 1s linear infinite;"></div>
+  </div>
   <header>
-    <div style="display: flex; align-items: center;">
-      <img src="https://ui-avatars.com/api/?name=MB&background=007aff&color=ffffff&rounded=true" alt="MB Logo" style="width: 40px; height: 40px; margin-right: 0.5rem;">
-      <h1 style="font-size: 1.5rem;">Maurice Bugg</h1>
-    </div>
+    <div class="logo">MB</div>
     <nav>
       <a href="#about">About</a>
       <a href="#work">Work</a>
-      <a href="#passions">Passions</a>
+      <a href="#projects">Project</a>
       <a href="#blog">Blog</a>
       <a href="#timeline">Timeline</a>
       <a href="#contact">Contact</a>
@@ -218,82 +225,122 @@
   </header>
 
   <section class="hero">
-    <h2>Welcome to My Story</h2>
+    <h1>Welcome to My Story</h1>
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
   <section id="about">
-    <h3 class="section-title">About Me</h3>
-    <p>I'm a multidisciplinary builder from the DMV area now living in New York City. With a background in technology, international development, and mental health advocacy, I strive to bring purpose and connection to everything I do—from product launches to nonprofit work, marathons, and storytelling.</p>
+    <h2>About</h2>
+    <p>I’m Maurice Bugg — a project manager, runner, and community advocate based in NYC. With a passion for technology, wellness, and service, I strive to build impactful solutions, support mental health initiatives, and stay grounded through fitness and storytelling.</p>
   </section>
 
   <section id="work">
-    <h3 class="section-title">My Work</h3>
-    <div class="grid">
+    <h2>My Work</h2>
+    <div class="card-container">
       <div class="card">
-        <h4>Microsoft – Project Manager</h4>
-        <p>Lead cross-functional workstreams focused on engineering operations and GTM strategy.</p>
+        <h3>Business Program Manager, Microsoft</h3>
+        <p>Leading initiatives in AI, security, and engineering operations across key accounts.</p>
       </div>
       <div class="card">
-        <h4>NAMI-NYC</h4>
-        <p>Community outreach volunteer and NYC Marathon fundraiser supporting young adult mental health.</p>
+        <h3>BPM, Microsoft SolutionOps</h3>
+        <p>Managed cross-functional projects and improved delivery workflows in Data & AI.</p>
       </div>
       <div class="card">
-        <h4>BRC Leadership Council</h4>
-        <p>Board member supporting housing justice in NYC through corporate sponsorship and storytelling initiatives.</p>
+        <h3>Program Manager Intern, Microsoft</h3>
+        <p>Shaped Power Platform strategy and built solutions for international partner teams.</p>
       </div>
     </div>
   </section>
 
-  <section id="passions">
-    <h3 class="section-title">My Projects</h3>
-    <div class="grid">
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="card-container">
       <div class="card">
-        <h4>Secure the Future Initiative</h4>
-        <p>Led post-incident retrospectives for cloud engineering platforms.</p>
+        <h3>NYC Marathon Fundraising</h3>
+        <p>Running for NAMI-NYC to raise awareness and support mental health advocacy.</p>
       </div>
       <div class="card">
-        <h4>Personal Knowledge System</h4>
-        <p>Built a personal knowledge base to manage life goals, health, and long-term planning.</p>
+        <h3>BRC Leadership Council</h3>
+        <p>Organizing the Fall Benefit and connecting Microsoft with local nonprofits.</p>
       </div>
       <div class="card">
-        <h4>Intrepid x Southeast Asia</h4>
-        <p>Upcoming solo journey combining wellness, exploration, and global connection.</p>
+        <h3>BISE Networking Program</h3>
+        <p>Developed a buddy pairing app to foster connections across Microsoft ISE teams.</p>
       </div>
     </div>
   </section>
 
   <section id="blog">
-    <h3 class="section-title">Blog & Writing</h3>
-    <p>Coming soon: reflections on building, growing, and living intentionally.</p>
-  </section>
-
-  <section id="timeline">
-    <h3 class="section-title">Timeline</h3>
-    <div class="timeline">
-      <div class="timeline-entry">
-        <h4>2024</h4>
-        <p>Joined BRC Leadership Council and committed to raising $200,000 for housing justice in NYC.</p>
+    <h2>Blog</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Why I Run</h3>
+        <p>Running is more than a sport — it’s a practice in mental clarity and resilience.</p>
       </div>
-      <div class="timeline-entry">
-        <h4>2023</h4>
-        <p>Launched Secure the Future Initiative with engineering teams to strengthen cloud platform resilience.</p>
+      <div class="card">
+        <h3>Building Community in Tech</h3>
+        <p>Reflections on creating inclusive, intentional spaces at Microsoft and beyond.</p>
       </div>
     </div>
   </section>
 
+  <section id="timeline">
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-entry">2025 – Running NYC Marathon for NAMI-NYC</div>
+      <div class="timeline-entry">2024 – Joined BRC Leadership Council</div>
+      <div class="timeline-entry">2023 – Promoted to BPM at Microsoft</div>
+      <div class="timeline-entry">2022 – Graduated and started full-time at Microsoft</div>
+      <div class="timeline-entry">2020 – Internship at Microsoft Power Platform</div>
+    </div>
+  </section>
+
   <section id="contact">
-    <h3 class="section-title">Contact Me</h3>
+    <h2>Contact</h2>
     <form action="https://formspree.io/f/xnnvpgjl" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
   </section>
 
-  <footer>
-    <p>© 2025 Maurice Bugg. All rights reserved.</p>
-  </footer>
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+          top,
+          behavior: 'smooth'
+        });
+      });
+    });
+      // Hide loader once content is ready
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          document.body.classList.add('loaded');
+        }, 200);
+      });
+    });
+  </script>
 </body>
-</html>
