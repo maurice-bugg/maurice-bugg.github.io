@@ -6,7 +6,7 @@
   <title>Maurice Bugg</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="icon" href="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" />
+  <link rel="icon" href="https://ui-avatars.com/api/?name=MB&background=007aff&color=ffffff&rounded=true" />
   <style>
     :root {
       --bg-light: #f5f5f7;
@@ -190,19 +190,24 @@
 </head>
 <body>
   <header>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <img src="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" alt="MB Logo" style="height: 32px; width: 32px; border-radius: 50%;">
-    <h1 style="margin: 0;"><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
+  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="https://ui-avatars.com/api/?name=MB&background=000000&color=ffffff&rounded=true" alt="MB Logo" style="height: 32px; width: 32px; border-radius: 50%;">
+      <h1 style="margin: 0;"><a href="#hero" style="text-decoration: none; color: inherit;">Maurice Bugg</a></h1>
+    </div>
+    
+      <button class="menu-toggle" style="display: none;" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+    </div>
   </div>
   <nav class="main-nav" id="mainNav">
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#passions">Passions</a>
+    <a href="#timeline">Timeline</a>
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
   </nav>
-  <button class="menu-toggle" style="display: none;" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
-  <button class="toggle-dark" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+  <button class="toggle-dark" onclick="toggleDarkMode()" style="margin-left: auto; background: #007aff; border: none; color: white; padding: 0.5rem 2rem; border-radius: 8px; cursor: pointer;">Toggle Dark Mode</button>
 </header>
 <style>
   nav.main-nav {
@@ -261,12 +266,12 @@
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
-  <section id="about" data-aos="fade-up">
+  <section id="about" style="scroll-margin-top: 160px;" data-aos="fade-up">
     <h3 class="section-title">About Me</h3>
     <p>I’m a multidisciplinary builder from the DMV area now living in New York City. With a background in technology, international development, and mental health advocacy, I strive to bring purpose and connection to everything I do—from product launches to nonprofit work, marathons, and storytelling.</p>
   </section>
 
-  <section id="work" data-aos="fade-up">
+  <section id="work" style="scroll-margin-top: 160px;" data-aos="fade-up">
     <h3 class="section-title">My Work</h3>
     <div class="grid">
       <div class="card"><h4>Microsoft – Project Manager</h4><p>Lead cross-functional workstreams focused on engineering operations and GTM strategy.</p></div>
@@ -284,7 +289,7 @@
     </div>
   </section>
 
-  <section id="passions" data-aos="fade-up">
+  <section id="passions" style="scroll-margin-top: 160px;" data-aos="fade-up">
     <h3 class="section-title">My Passions</h3>
     <div class="grid">
       <div class="card"><h4>Endurance Sports</h4><p>Triathlete in training. Cyclist. Sub-4-hour marathon chaser.</p></div>
@@ -293,7 +298,7 @@
     </div>
   </section>
 
-  <section id="blog" data-aos="fade-up">
+  <section id="blog" style="scroll-margin-top: 160px;" data-aos="fade-up">
     <h3 class="section-title">Blog & Writing</h3>
     <div class="grid">
       <div class="card"><h4>Lessons from the Marathon</h4><p>Training taught me more than endurance—it taught me presence, pain tolerance, and self-trust.</p></div>
@@ -327,5 +332,12 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+<script>
+  function toggleDarkMode() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    const button = document.querySelector('.toggle-dark');
+    button.textContent = isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+  }
+</script>
 </body>
 </html>
