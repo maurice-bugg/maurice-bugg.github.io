@@ -204,15 +204,9 @@ body.dark-mode nav a {
       font-size: 0.875rem;
       color: #6e6e73;
     }
-  .hero-animated span {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
+  
 
-.hero-animated span:hover {
-  transform: translateY(-4px) scale(1.2);
-  color: #007aff;
-}
+
 </style>
 </head>
 <body class="dark-mode">
@@ -287,7 +281,7 @@ body.dark-mode nav a {
 </style>
 
   <section class="hero" id="hero">
-  <h2 data-aos="fade-down" data-aos-delay="100" class="hero-animated">Welcome to My Story</h2>
+  <h2 data-aos="fade-down" data-aos-delay="100" >Welcome to My Story</h2>
   <p data-aos="fade-up" data-aos-delay="300">A journey of growth, creativity, and purpose through work, wellness, and community.</p>
 </section>
 
@@ -356,13 +350,7 @@ body.dark-mode nav a {
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  const heroText = document.querySelector('.hero-animated');
-  if (heroText) {
-    const chars = heroText.innerText.split('');
-    heroText.innerHTML = chars.map(char => `<span>${char}</span>`).join(' ');
-  }
-</script>
+
   <script>AOS.init();</script>
 
 <script>
