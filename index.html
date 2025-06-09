@@ -2,13 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Ensures proper rendering on all devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maurice's Story</title>
-  <!-- Importing Inter font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Apply box-sizing, remove default margin/padding, and set base font */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,49 +13,58 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Base styling for body */
     body {
-      background-color: #f5f5f7; /* Light gray background similar to Apple's site */
-      color: #1d1d1f; /* Dark gray text for readability */
+      background-color: #f5f5f7;
+      color: #1d1d1f;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* Header bar styling */
     header {
       background-color: #fff;
       padding: 1rem 2rem;
-      border-bottom: 1px solid #e0e0e0; /* Light bottom border for separation */
+      border-bottom: 1px solid #e0e0e0;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header h1 {
-      font-size: 2rem; /* Large title */
+      font-size: 2rem;
+      transition: color 0.3s ease;
     }
 
-    /* Hero section styling (introductory area) */
+    header h1:hover {
+      color: #007aff;
+      cursor: pointer;
+    }
+
     section.hero {
       text-align: center;
-      padding: 4rem 2rem;
-      background: #000; /* Dark background for dramatic effect */
-      color: #fff; /* Light text for contrast */
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(to right, #000, #333);
+      color: #fff;
     }
 
     section.hero h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
     }
 
     section.hero p {
       font-size: 1.25rem;
       max-width: 600px;
-      margin: 0 auto; /* Center paragraph */
+      margin: 0 auto;
+      animation: fadeIn 2s ease-out;
     }
 
-    /* Main story section styling */
     section.story {
       padding: 3rem 2rem;
       max-width: 800px;
-      margin: 0 auto; /* Center content horizontally */
+      margin: 0 auto;
+      animation: slideUp 1s ease-out;
     }
 
     section.story h3 {
@@ -66,28 +72,34 @@
       margin-bottom: 1rem;
     }
 
-    /* Footer styling */
     footer {
       text-align: center;
       padding: 2rem;
-      font-size: 0.875rem; /* Smaller text */
-      color: #6e6e73; /* Subdued gray text */
+      font-size: 0.875rem;
+      color: #6e6e73;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- Page header with name -->
   <header>
-    <h1>Maurice Bugg</h1>
+    <h1 onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Maurice Bugg</h1>
   </header>
 
-  <!-- Hero section with introductory message -->
   <section class="hero">
     <h2>Welcome to My Story</h2>
     <p>This is where I share the journey of my life—challenges, triumphs, and everything in between.</p>
   </section>
 
-  <!-- Story content section -->
   <section class="story">
     <h3>About Me</h3>
     <p>
@@ -105,7 +117,6 @@
     </p>
   </section>
 
-  <!-- Footer with copyright notice -->
   <footer>
     &copy; 2025 Maurice Bugg. All rights reserved.
   </footer>
