@@ -193,37 +193,21 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 767px) {
-  #work .card-container {
-    flex-direction: column;
-    overflow-y: auto;
-    max-height: 225px;
-  }
-
-  #work .card {
-    flex: 1 0 auto;
-  }
-
-  #projects .card-container,
-  #blog .card-container {
-    flex-direction: column;
-    overflow-y: auto;
-    max-height: 225px;
-  }
-
-  #projects .card,
-  #blog .card {
-    flex: 1 0 auto;
-  }
-}
-
-  #work .card {
-    flex: 1 0 auto;
-  }
-}
+      #work .card-container {
+        flex-direction: column;
+        overflow-x: visible;
+        overflow-y: visible;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">MB</div>
@@ -242,12 +226,12 @@
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
-  <section id="about">
+  <section id="about" style="scroll-margin-top: 0px;">
     <h2>About</h2>
     <p>I’m Maurice Bugg — a project manager, runner, and community advocate based in NYC. With a passion for technology, wellness, and service, I strive to build impactful solutions, support mental health initiatives, and stay grounded through fitness and storytelling.</p>
   </section>
 
-  <section id="work">
+  <section id="work" style="scroll-margin-top: 0px;">
     <h2>My Work</h2>
     <div class="card-container">
       <div class="card">
@@ -265,7 +249,7 @@
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" style="scroll-margin-top: 0px;">
     <h2>My Projects</h2>
     <div class="card-container">
       <div class="card">
@@ -283,7 +267,7 @@
     </div>
   </section>
 
-  <section id="blog">
+  <section id="blog" style="scroll-margin-top: 0px;">
     <h2>Blog</h2>
     <div class="card-container">
       <div class="card">
@@ -297,7 +281,7 @@
     </div>
   </section>
 
-  <section id="timeline">
+  <section id="timeline" style="scroll-margin-top: 0px;">
     <h2>Timeline</h2>
     <div class="timeline">
       <div class="timeline-entry">2025 – Running NYC Marathon for NAMI-NYC</div>
@@ -330,7 +314,9 @@
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.1 });
+      }, {
+        threshold: 0.1
+      });
 
       cards.forEach(card => observer.observe(card));
       entries.forEach(entry => observer.observe(entry));
