@@ -197,6 +197,14 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 767px) {
+      #work .card-container {
+        flex-direction: column;
+        overflow-x: visible;
+        overflow-y: visible;
+      }
+    }
   </style>
 </head>
 
