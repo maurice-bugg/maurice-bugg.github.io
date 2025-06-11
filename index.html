@@ -15,6 +15,8 @@
       font-family: 'Inter', sans-serif;
       background: white;
       color: #1a1a1a;
+      font-size: 18px; /* Slightly larger base font */
+      line-height: 1.6; /* More readable text */
     }
         /* Header styling with grid layout for desktop */
     header {
@@ -23,7 +25,8 @@
       align-items: center;
       position: sticky;
       top: 0;
-      background: white;
+      background: rgba(255, 255, 255, 0.8); /* Translucent background */
+      backdrop-filter: blur(10px); /* Apple-like blur effect */
       padding: 0.5rem 1rem;
       border-bottom: 1px solid #e0e0e0;
       z-index: 10;
@@ -51,7 +54,7 @@
         /* General section layout */
     section {
       padding: 120px 2rem 80px;
-      max-width: 960px;
+      max-width: 768px;
       margin: 0 auto;
       border-bottom: 1px solid #eaeaea;
     }
@@ -59,13 +62,14 @@
       text-align: center;
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
       letter-spacing: -0.5px;
     }
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1rem; /* Standard mobile paragraph font size */
+      font-size: 1.125rem;
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.6;
@@ -118,12 +122,22 @@
 }
   /* Consolidated and cleaned mobile styles */
   @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Consistent mobile font size */
+      line-height: 1.6;
+    }
+
+    section {
+      max-width: 100%; /* Allow full width on small screens */
+      padding: 80px 1rem 60px;
+    }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.25rem 0.75rem;
-      background: white;
+      background: rgba(255, 255, 255, 0.8); /* Match translucent desktop header */
+      backdrop-filter: blur(10px); /* Apple-like blur effect */
       border-bottom: 1px solid #e0e0e0;
     }
 
@@ -168,7 +182,7 @@
     }
 
     .hero h1 {
-      font-size: 2.25rem;
+      font-size: 3rem; /* Larger mobile heading */
     }
 
     .card-container {
