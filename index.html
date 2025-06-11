@@ -22,7 +22,7 @@
       position: sticky;
       top: 0;
       background: white;
-      padding: 1.5rem 3rem;
+      padding: 0.5rem 1rem;
       border-bottom: 1px solid #e0e0e0;
       z-index: 10;
     }
@@ -111,19 +111,121 @@
       font-weight: bold;
       cursor: pointer;
 }
-  </style>
+  @media (max-width: 768px) {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 0.75rem;
+        background: white;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      header > div, header nav, .logo {
+        justify-self: center !important;
+      }
+      nav a {
+        display: inline-block;
+        margin: 0 1rem;
+        font-size: 0.95rem;
+      }
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 90%;
+      }
+      form {
+        padding: 0 1rem;
+      }
+      input, textarea, button {
+        font-size: 1rem;
+      }
+    }
+  .nav-bar.open {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      #menu-toggle {
+        display: block;
+      }
+      nav.nav-bar {
+        display: none !important;
+      }
+      nav.nav-bar.open {
+        display: flex !important;
+      }
+    }
+    }
+  .nav-desktop {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.nav-mobile-toggle, .nav-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4CAF50;
+  }
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .nav-mobile.open {
+    display: flex !important;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const menuBtn = document.getElementById('menu-toggle');
+  const navMobile = document.querySelector('.nav-mobile');
+  menuBtn.addEventListener('click', () => {
+    navMobile.classList.toggle('open');
+  });
+});
+</script>
 </head>
 <body>
   <header>
-    <div style="justify-self: start; font-weight: 800; font-size: 1.2rem; color: #4CAF50;">Maurice Bugg</div>
-    <nav style="justify-self: center;">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="logo" style="justify-self: end;">MB</div>
-  </header>
+  <div class="logo">MB</div>
+  <nav class="nav-desktop">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button id="menu-toggle" class="nav-mobile-toggle">☰</button>
+  <nav class="nav-bar nav-mobile">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
   <section class="hero">
     <h1>Welcome to My Story</h1>
