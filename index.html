@@ -6,6 +6,17 @@
   <title>Maurice Bugg</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
+    /* Fade-in animation for elements on load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
     /* Base styles for typography, layout, and background */
     html {
       scroll-behavior: smooth;
@@ -65,6 +76,7 @@
       border-bottom: 1px solid #eaeaea;
     }
     .hero {
+      animation: fadeInUp 1s ease-out;
       text-align: center;
     }
     .hero h1 {
@@ -90,18 +102,21 @@
       padding-bottom: 1rem;
     }
     .card {
+      animation: fadeInUp 0.6s ease-out;
       flex: 0 0 300px;
       width: 100%;
       background: #f9f9f9;
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .timeline {
       border-left: 2px solid #4CAF50;
       padding-left: 1rem;
     }
     .timeline-entry {
+      animation: fadeInUp 0.8s ease-out;
       margin-bottom: 2rem;
     }
         /* Contact form layout */
@@ -255,6 +270,23 @@
 .green-bg {
   background: #4CAF50;
 }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+.scroll-indicator {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6e6e73;
+    margin-bottom: 1rem;
+    display: none;
+  }
+
+  @media (min-width: 769px) {
+    .scroll-indicator {
+      display: block;
+    }
+  }
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -309,6 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <section id="work">
     <h2>My Work</h2>
+    <div class="scroll-indicator">⇠ Scroll for more ⇢</div>
     <div class="card-container">
       <div class="card">
         <h3>Business Program Manager, Microsoft</h3>
