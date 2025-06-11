@@ -280,10 +280,22 @@
     color: #6e6e73;
     margin-bottom: 1rem;
     display: none;
+    animation: bounce 2s infinite;
   }
 
   @media (min-width: 769px) {
     .scroll-indicator {
+      display: block;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+
+  @media (max-width: 768px) {
+    .scroll-indicator-mobile {
       display: block;
     }
   }
