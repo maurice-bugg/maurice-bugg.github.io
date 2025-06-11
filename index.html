@@ -91,9 +91,10 @@
     }
     .card {
       flex: 0 0 300px;
+      width: 100%;
       background: #f9f9f9;
-      border-radius: 6px;
-      padding: 1.5rem;
+      border-radius: 12px;
+      padding: 2rem;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
     .timeline {
@@ -204,7 +205,7 @@
     }
 
     #work .card {
-      height: 120px;
+      height: 90px; /* Smaller card height for mobile */
       overflow: auto;
     }
 
@@ -279,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </head>
 <body>
   <header>
-  <div class="logo green-bg">MB</div>
+  <a href="#" class="logo green-bg" style="text-decoration: none;">MB</a>
   <nav class="nav-desktop">
     <a href="#about">About</a>
     <a href="#work">Work</a>
