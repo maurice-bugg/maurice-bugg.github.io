@@ -30,7 +30,16 @@
       "name": "Maurice Bugg",
       "url": "https://mauricebugg.com"
     }
-  </script>
+  // Parallax effect
+  const layers = document.querySelectorAll('.parallax-layer');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    layers.forEach((layer, i) => {
+      const speed = 0.1 + i * 0.05;
+      layer.style.transform = `translateY(${scrollTop * speed}px)`;
+    });
+  });
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://mauricebugg.com" />
@@ -365,6 +374,66 @@ section.visible,
   transform: translateY(0);
 }
   </style>
+<style>
+  .parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform: translateZ(0);
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .parallax-layer.sky {
+    background-image: url('/images/layer-sky.png');
+    z-index: 1;
+    transform: translateY(0px);
+  }
+
+  .parallax-layer.mountains {
+    background-image: url('/images/layer-mountains.png');
+    z-index: 2;
+    transform: translateY(10px);
+  }
+
+  .parallax-layer.trees {
+    background-image: url('/images/layer-trees.png');
+    z-index: 3;
+    transform: translateY(20px);
+  }
+
+  .parallax-layer.characters {
+    background-image: url('/images/layer-characters.png');
+    z-index: 4;
+    transform: translateY(30px);
+  }
+
+  .parallax-layer.foreground {
+    background-image: url('/images/layer-foreground.png');
+    z-index: 5;
+    transform: translateY(40px);
+  }
+
+  @media (max-width: 768px) {
+    .parallax-layer {
+      display: none;
+    }
+    .parallax-container {
+      background: url('/images/layer-fullscene-mobile.png') center / cover no-repeat;
+    }
+  }
+</style>
 </head>
 <body>
   <header role="banner">
@@ -385,7 +454,12 @@ section.visible,
 </header>
 
 <main role="main">
-<section class="hero">
+<section class="hero parallax-container">
+  <div class="parallax-layer sky"></div>
+  <div class="parallax-layer mountains"></div>
+  <div class="parallax-layer trees"></div>
+  <div class="parallax-layer characters"></div>
+  <div class="parallax-layer foreground"></div>
     <h1>Welcome to My Story</h1>
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
