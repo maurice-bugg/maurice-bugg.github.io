@@ -112,6 +112,13 @@
       cursor: pointer;
 }
   @media (max-width: 768px) {
+  /* Vertical scrolling for My Work cards */
+  #work .card-container {
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 400px;
+    align-items: stretch;
+  }
       header {
         display: flex;
         justify-content: space-between;
@@ -205,6 +212,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const navMobile = document.querySelector('.nav-mobile');
   menuBtn.addEventListener('click', () => {
     navMobile.classList.toggle('open');
+  });
+
+  // Close menu when a link is clicked
+  const mobileLinks = document.querySelectorAll('.nav-mobile a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMobile.classList.remove('open');
+    });
   });
 });
 </script>
