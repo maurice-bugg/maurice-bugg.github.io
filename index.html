@@ -1,9 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Maurice Bugg",
+      "url": "https://mauricebugg.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/maurice-bugg/",
+        "https://github.com/maurice-bugg"
+      ],
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Microsoft"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "addressCountry": "USA"
+      }
+    }
+      },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Maurice Bugg",
+      "url": "https://mauricebugg.com"
+    }
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://mauricebugg.com" />
   <title>Maurice Bugg</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Maurice Bugg — a project manager, runner, and community advocate based in NYC. Learn more about his work in technology, wellness, and service." />
+  <meta name="keywords" content="Maurice Bugg, project manager, Microsoft, NYC, mental health, community advocate, portfolio, technology" />
+  <meta name="author" content="Maurice Bugg" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Maurice Bugg" />
+  <meta property="og:description" content="Maurice Bugg — a project manager, runner, and community advocate based in NYC. Learn more about his work in technology, wellness, and service." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mauricebugg.com" /> <!-- Replace with your actual URL -->
+  <meta property="og:image" content="https://mauricebugg.com/images/og-image.jpg" /> <!-- Replace with your actual image URL -->
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Maurice Bugg" />
+  <meta name="twitter:description" content="Maurice Bugg — a project manager, runner, and community advocate based in NYC. Learn more about his work in technology, wellness, and service." />
+  <meta name="twitter:image" content="https://mauricebugg.com/images/og-image.jpg" /> <!-- Replace with your actual image URL -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
 /* Fade-in animation for elements on load */
@@ -318,9 +367,9 @@ section.visible,
   </style>
 </head>
 <body>
-  <header>
+  <header role="banner">
   <a href="#" class="logo green-bg" style="text-decoration: none;">MB</a>
-  <nav class="nav-desktop">
+  <nav class="nav-desktop" role="navigation" aria-label="Main navigation">
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#timeline">Timeline</a>
@@ -335,19 +384,19 @@ section.visible,
   </nav>
 </header>
 
-<main>
+<main role="main">
 <section class="hero">
     <h1>Welcome to My Story</h1>
     <p>A journey of growth, creativity, and purpose through work, wellness, and community.</p>
   </section>
 
-  <section id="about">
-    <h2>About</h2>
+  <section id="about" aria-labelledby="about-heading">
+    <h2 id="about-heading">About</h2>
     <p>I’m Maurice Bugg — a project manager, runner, and community advocate based in NYC. With a passion for technology, wellness, and service, I strive to build impactful solutions, support mental health initiatives, and stay grounded through fitness and storytelling.</p>
   </section>
 
-  <section id="work">
-    <h2>My Work</h2>
+  <section id="work" aria-labelledby="work-heading">
+    <h2 id="work-heading">My Work</h2>
     <div class="scroll-indicator">⇠ Scroll for more ⇢</div>
     <div class="card-container">
       <div class="card">
@@ -365,8 +414,8 @@ section.visible,
     </div>
   </section>
 
-  <section id="timeline">
-    <h2>Timeline</h2>
+  <section id="timeline" aria-labelledby="timeline-heading">
+    <h2 id="timeline-heading">Timeline</h2>
     <div class="timeline">
       <div class="timeline-entry">2025 – Running NYC Marathon for NAMI-NYC</div>
       <div class="timeline-entry">2024 – Joined BRC Leadership Council</div>
@@ -375,9 +424,9 @@ section.visible,
       <div class="timeline-entry">2020 – Internship at Microsoft Power Platform</div>
     </div>
   </section></main>
-<section id="contact">
-    <h2>Contact</h2>
-    <form action="https://formspree.io/f/xnnvpgjl" method="POST">
+<section id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Contact</h2>
+    <form action="https://formspree.io/f/xnnvpgjl" method="POST" aria-label="Contact form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
