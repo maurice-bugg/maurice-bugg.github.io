@@ -5,7 +5,317 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maurice Bugg</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+/* Fade-in animation for elements on load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Base styles for typography, layout, and background */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      color: #1a1a1a;
+      font-size: 18px; /* Slightly larger base font */
+      line-height: 1.6; /* More readable text */
+    }
+        /* Header styling with grid layout for desktop */
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.8); /* Translucent background */
+      backdrop-filter: blur(10px); /* Apple-like blur effect */
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      z-index: 10;
+    }
+        /* Logo circle with centered initials */
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    }
+
+    nav a:hover {
+      color: #4CAF50;
+      transform: translateY(-2px); /* Subtle lift effect */
+    }
+        /* General section layout */
+    section {
+      padding: 120px 2rem 80px;
+      max-width: 768px;
+      margin: 0 auto;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .hero {
+      animation: fadeInUp 1s ease-out;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 1rem; /* Standard mobile paragraph font size */
+      font-size: 1.125rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    h2, h3 {
+      font-weight: 700;
+    }
+    .card-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .card {
+      animation: fadeInUp 0.6s ease-out;
+      flex: 0 0 300px;
+      width: 100%;
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .timeline {
+      border-left: 2px solid #4CAF50;
+      padding-left: 1rem;
+    }
+    .timeline-entry {
+      animation: fadeInUp 0.8s ease-out;
+      margin-bottom: 2rem;
+    }
+        /* Contact form layout */
+    form {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.75rem;
+      border: none;
+      background: #43A047;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+}
+  /* Consolidated and cleaned mobile styles */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Consistent mobile font size */
+      line-height: 1.6;
+    }
+
+    section {
+      max-width: 100%; /* Allow full width on small screens */
+      padding: 80px 1rem 60px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255, 255, 255, 0.8); /* Match translucent desktop header */
+      backdrop-filter: blur(10px); /* Apple-like blur effect */
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logo {
+      justify-self: start !important;
+    }
+
+    .nav-desktop {
+      display: none;
+    }
+
+    .nav-mobile-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #4CAF50;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      background: white;
+      position: absolute;
+      top: 3rem;
+      right: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-mobile.open {
+      display: flex !important;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem; /* Larger mobile heading */
+    }
+
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #work .card-container {
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 400px;
+      align-items: stretch;
+    }
+
+    #work .card {
+      height: 90px; /* Smaller card height for mobile */
+      overflow: auto;
+    }
+
+    .card {
+      width: 90%;
+    }
+
+    form {
+      padding: 0 1rem;
+    }
+
+    input, textarea, button {
+      font-size: 1rem;
+    }
+  }
+.nav-mobile-toggle, .nav-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4CAF50;
+  }
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .nav-mobile.open {
+    display: flex !important;
+  }
+}
+.green-bg {
+  background: #4CAF50;
+}
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+.scroll-indicator {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6e6e73;
+    margin-bottom: 1rem;
+    display: none;
+    animation: bounce 2s infinite;
+  }
+
+  @media (min-width: 769px) {
+    .scroll-indicator {
+      display: block;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+
+  @media (max-width: 768px) {
+    .scroll-indicator-mobile {
+      display: block;
+    }
+  }
+
+/* Animate elements when they scroll into view */
+section,
+.card,
+.timeline-entry {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible,
+.card.visible,
+.timeline-entry.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+  </style>
 </head>
 <body>
   <header>
@@ -74,6 +384,40 @@
       <button type="submit">Send</button>
     </form>
   </section>
-  <script src="script.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const menuBtn = document.getElementById('menu-toggle');
+  const navMobile = document.querySelector('.nav-mobile');
+
+  if (menuBtn && navMobile) {
+    // Toggle mobile nav
+    menuBtn.addEventListener('click', () => {
+      navMobile.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+      });
+    });
+  }
+
+  // Reveal sections, cards, and timeline entries on scroll
+  const sections = document.querySelectorAll('section');
+  const cards = document.querySelectorAll('.card');
+  const entries = document.querySelectorAll('.timeline-entry');
+
+  const observer = new IntersectionObserver(items => {
+    items.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  [...sections, ...cards, ...entries].forEach(el => observer.observe(el));
+});
+  </script>
 </body>
 </html>
